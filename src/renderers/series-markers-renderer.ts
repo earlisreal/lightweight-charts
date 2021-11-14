@@ -10,6 +10,7 @@ import { SeriesItemsIndexesRange, TimedValue } from '../model/time-data';
 import { ScaledRenderer } from './scaled-renderer';
 import { drawArrow, hitTestArrow } from './series-markers-arrow';
 import { drawCircle, hitTestCircle } from './series-markers-circle';
+import { drawDiamond, hitTestDiamond } from './series-markers-diamond';
 import { drawSquare, hitTestSquare } from './series-markers-square';
 import { drawText, hitTestText } from './series-markers-text';
 
@@ -120,6 +121,9 @@ function drawShape(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingConte
 		case 'square':
 			drawSquare(ctx, item.x, item.y, item.size);
 			return;
+		case 'diamond':
+			drawDiamond(ctx, item.x, item.y, item.size);
+			return;
 	}
 
 	ensureNever(item.shape);
@@ -147,5 +151,7 @@ function hitTestShape(item: SeriesMarkerRendererDataItem, x: Coordinate, y: Coor
 			return hitTestCircle(item.x, item.y, item.size, x, y);
 		case 'square':
 			return hitTestSquare(item.x, item.y, item.size, x, y);
+		case 'diamond':
+			return hitTestDiamond(item.x, item.y, item.size, x, y);
 	}
 }
