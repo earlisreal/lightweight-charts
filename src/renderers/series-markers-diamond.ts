@@ -8,15 +8,16 @@ export function drawDiamond(
 	centerY: Coordinate,
 	size: number
 ): void {
-	const squareSize = shapeSize('diamond', size);
-	const halfSize = (squareSize - 1) / 2;
-	const left = centerX - halfSize;
-	const top = centerY - halfSize;
+	const diamondSize = shapeSize('diamond', size);
+	const halfSize = (diamondSize - 1) / 2;
 
-	ctx.translate(centerX, centerY);
-	ctx.rotate(45 * Math.PI / 180);
-	ctx.translate(centerX * -1, centerY * -1);
-	ctx.fillRect(left, top, squareSize, squareSize);
+	ctx.beginPath();
+	ctx.moveTo(centerX, centerY - halfSize);
+	ctx.lineTo(centerX - halfSize, centerY);
+	ctx.lineTo(centerX, centerY + halfSize);
+	ctx.lineTo(centerX + halfSize, centerY);
+	ctx.lineTo(centerX, centerY - halfSize);
+	ctx.fill();
 }
 
 export function hitTestDiamond(
@@ -26,11 +27,11 @@ export function hitTestDiamond(
 	x: Coordinate,
 	y: Coordinate
 ): boolean {
-	const squareSize = shapeSize('diamond', size);
-	const halfSize = (squareSize - 1) / 2;
+	const diamondSize = shapeSize('diamond', size);
+	const halfSize = (diamondSize - 1) / 2;
 	const left = centerX - halfSize;
 	const top = centerY - halfSize;
 
-	return x >= left && x <= left + squareSize &&
-		y >= top && y <= top + squareSize;
+	return x >= left && x <= left + diamondSize &&
+		y >= top && y <= top + diamondSize;
 }
