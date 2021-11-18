@@ -570,6 +570,7 @@ export class Series<T extends SeriesType = SeriesType> extends PriceDataSource i
 				position: marker.position,
 				shape: marker.shape,
 				color: marker.color,
+				borderWidth: marker.borderWidth,
 				id: marker.id,
 				internalId: index,
 				text: marker.text,

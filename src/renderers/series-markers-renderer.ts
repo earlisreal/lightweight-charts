@@ -26,6 +26,7 @@ export interface SeriesMarkerRendererDataItem extends TimedValue {
 	size: number;
 	shape: SeriesMarkerShape;
 	color: string;
+	borderWidth: number;
 	internalId: number;
 	externalId?: string;
 	text?: SeriesMarkerText;
@@ -101,6 +102,7 @@ function drawItem(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingContex
 	}
 
 	drawShape(item, ctx);
+	drawBorder(item, ctx);
 }
 
 function drawShape(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingContext2D): void {
@@ -127,6 +129,13 @@ function drawShape(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingConte
 	}
 
 	ensureNever(item.shape);
+}
+
+function drawBorder(item: SeriesMarkerRendererDataItem, ctx: CanvasRenderingContext2D): void {
+	if (item.borderWidth > 0) {
+		ctx.lineWidth = item.borderWidth;
+		ctx.stroke();
+	}
 }
 
 function hitTestItem(item: SeriesMarkerRendererDataItem, x: Coordinate, y: Coordinate): boolean {

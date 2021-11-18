@@ -169,6 +169,7 @@ export class SeriesMarkersPaneView implements IUpdatablePaneView {
 				size: 0,
 				shape: marker.shape,
 				color: marker.color,
+				borderWidth: marker.borderWidth,
 				internalId: marker.internalId,
 				externalId: marker.id,
 				text: undefined,

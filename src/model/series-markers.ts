@@ -29,6 +29,10 @@ export interface SeriesMarker<TimeType> {
 	 */
 	color: string;
 	/**
+	 * The width of the border.
+	 */
+	borderWidth: number;
+	/**
 	 * The ID of the marker.
 	 */
 	id?: string;
