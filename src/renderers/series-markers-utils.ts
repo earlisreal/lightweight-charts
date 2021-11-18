@@ -21,8 +21,9 @@ export function shapeSize(shape: SeriesMarkerShape, originalSize: number): numbe
 		case 'circle':
 			return size(originalSize, 0.8);
 		case 'square':
-		case 'diamond':
 			return size(originalSize, 0.7);
+		case 'diamond':
+			return size(originalSize, 0.8);
 	}
 }
 
